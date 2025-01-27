@@ -1,9 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 import "./global.css";
-import { verifyInstallation } from "nativewind";
 import { useEffect, useState } from "react";
-import { getPosts } from "./features/post/getPost";
+import { verifyInstallation } from "nativewind";
 
 export type Post = {
 	userId: number;
@@ -21,12 +20,28 @@ export default function App() {
 				return { data: null, error: "some error" };
 			}
 			const data = await res.json();
+			console.log("記事データです", data);
 			setPosts(data);
 		};
 		getPosts();
+
+		const getQuizzes = async () => {
+			const res = await fetch("https://www.fruitsbase.com/api/quiz/", {
+				method: "GET",
+				headers: {
+					token: "fruitsbase",
+				},
+			});
+			if (!res.ok) {
+				return { data: null, error: "some error" };
+			}
+			const data = await res.json();
+			console.log("クイズデータです", data);
+		};
+		getQuizzes();
 	}, []);
 	return (
-		<View className="bg-gray-200 mt-20 flex-1">
+		<ScrollView className="bg-gray-200 mt-20 flex-1">
 			{posts.map((post) => (
 				<Text key={post.id} className="text-[15px] mt-2">
 					{post.title}
@@ -35,6 +50,6 @@ export default function App() {
 			<Text className="text-xs text-white w-fit">hello world</Text>
 			<Text className="text-[25px] w-fit">helloo world</Text>
 			<StatusBar style="auto" />
-		</View>
+		</ScrollView>
 	);
 }
