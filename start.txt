@@ -3,3 +3,11 @@ npx expo start --clear
 ```
 
 control + command + z でデバッガー表示
+
+```
+import CodeHighlighter from 'react-native-code-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+<CodeHighlighter hljsStyle={atomOneDark} language="typescript">
+                {`const hello = "world"`}
+            </CodeHighlighter>
+```
