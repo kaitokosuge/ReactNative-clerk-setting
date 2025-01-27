@@ -16,6 +16,7 @@
     "react-native": "0.76.6",
     "react-native-reanimated": "^3.16.7",
     "react-native-safe-area-context": "^5.1.0",
+    "react-syntax-highlighter": "^15.6.1",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
