@@ -3,6 +3,8 @@ import { ScrollView, Text, View } from "react-native";
 import "./global.css";
 import { useEffect, useState } from "react";
 import { verifyInstallation } from "nativewind";
+import CodeHighlighter from "react-native-code-highlighter";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export type Post = {
 	userId: number;
@@ -47,6 +49,9 @@ export default function App() {
 					{post.title}
 				</Text>
 			))}
+			<CodeHighlighter hljsStyle={atomOneDark} language="typescript">
+				{`const hello = "world"`}
+			</CodeHighlighter>
 			<Text className="text-xs text-white w-fit">hello world</Text>
 			<Text className="text-[25px] w-fit">helloo world</Text>
 			<StatusBar style="auto" />
