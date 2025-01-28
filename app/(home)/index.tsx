@@ -1,11 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { Image, ScrollView, Text, View } from 'react-native';
-import './global.css';
+// import { StatusBar } from 'expo-status-bar';
+import { Image, ScrollView, StatusBar, Text, View } from 'react-native';
+import './../../global.css';
 import { useEffect, useState } from 'react';
 import CodeHighlighter from 'react-native-code-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
-import { PublicQuiz } from './models/PublicQuiz';
+import { PublicQuiz } from '../../models/PublicQuiz';
 import React from 'react';
 
 export type Post = {
@@ -14,7 +14,7 @@ export type Post = {
     title: string;
     body: string;
 };
-export default function App() {
+export default function Page() {
     const [quizzes, setQuizzes] = useState<PublicQuiz[]>([]);
     useEffect(() => {
         const getQuizzes = async () => {
@@ -45,7 +45,7 @@ export default function App() {
             >
                 <View className="flex-row">
                     <Image
-                        source={require('./assets/fruitsbase-logo.png')}
+                        source={require('./../../assets/fruitsbase-logo.png')}
                         style={{
                             width: 100,
                             height: 60,
@@ -160,8 +160,6 @@ export default function App() {
                         ))}
                     </View>
                 </View>
-
-                {/* <StatusBar style="dark" backgroundColor="transparent" /> */}
             </ScrollView>
         </>
     );
